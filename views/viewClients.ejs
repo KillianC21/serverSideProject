@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/stylesheets/stylesheet.css">
+        
+    </head>
+    <body>
+        <div>
+            <%- include('partials/header') %>
+        </div>
+        <div class="heading">
+            <h1>Client booked sessions</h1>
+        </div>
+        <br>
+        <div>
+            <form action="/viewClients/search" method="GET">
+                <label for="search">Search client by ID: </label>
+                <input type="text" id="search_box" name="clientId" placeholder="Enter client id">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <br><br>
+        <div class="table_div">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id Number</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th>Card No.</th>
+                        <th>Date</th>
+                        <th>Create At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i < clientList.length; i++) { %>
+                    <tr>
+                        <td><%= clientList[i].id %></td>
+                        <td><%= clientList[i].full_name %></td>
+                        <td><%= clientList[i].email %></td>
+                        <td><%= clientList[i].phone %></td>
+                        <td><%= clientList[i].card %></td>
+                        <td><%= clientList[i].date %></td>
+                        <td><%= clientList[i].createdAt %></td>
+                        <td>
+                            <form action="/viewClients/sessionupdate/<%= clientList[i]._id %>" method="GET">
+                            <button id="update_btn" type="submit" >UPDATE</button>
+                            </form>
+                            <br><br>
+                            <form action="/viewClients/clientDelete/<%= clientList[i]._id %>" method="POST">
+                            <button type="submit" id="delete_btn">DELETE</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        <%- include('partials/footer') %>
+        <script src="/javascripts/script.js"></script>
+    </body>
+
+</html>

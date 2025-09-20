@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/stylesheet.css">
+    <title>update</title>
+</head>
+<body>
+    
+    <div class="heading">
+        <h1>UPDATE CLIENT</h1>
+    </div>
+    <div class="form_div">
+        <form id="updateForm" action="/viewClients/sessionupdate/<%= client._id %>" method="POST" class="form">
+                <label for="id">Id</label>
+                <input type="number" name="id" id="id" value="<%= client.id %>" required>
+                <br>
+                <label for="full_name">Full Name: </label>
+                <input type="text" name="full_name" id="full_name" value="<%= client.full_name %>" required>
+                <br>
+                <label for="email">Email: </label>
+                <input type="email" name="email" id="email" value="<%= client.email %>" required>
+                <br>
+                <label for="phone">Contact Number: </label>
+                <input type="tel" id="phone" name="phone" value="<%= client.phone %>" required>
+                <br>
+                <label for="date">Start Date: </label>
+                <input type="datetime-local" name="date" id="date" value="<%= client.date %>" required>
+                <br><br>
+                <button id="update" type="submit">UPDATE</button>
+        </form>
+    </div>
+    
+    <script src="/javascripts/script.js"></script>
+</body>
+</html>
